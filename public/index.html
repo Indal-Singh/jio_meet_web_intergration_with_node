@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jiomeet SDK Integration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="w-full min-h-screen bg-zinc-900 p-5 text-zinc-400">
+  <div class="jiomeet-form" id="jiomeet-form">
+    <h1>Enter Meeting Details</h1>
+    <div class="details-container">
+      <input value="4929159948" type="number" id="meetingId" placeholder="Enter Meeting Id" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
+      <input value="72Lxc" type="text" id="meetingPin" placeholder="Enter Meeting Pin" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
+      <input value="Indal Singh" type="text" id="personName" placeholder="Enter Your Name" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
+      <button class="bg-orange-900 rounded-lg text-white py-3 px-5" id="joinMeeting">Join</button>
+    </div>
+  </div>
+
+  <div id="main-meeting-container" class="main-meeting-container hidden relative w-full min-h-screen bg-zinc-800 rounded-lg">
+<div class="video-containers flex gap-5 flex-wrap p-5" id="video-containers">
+  <div id="screenShearPreview" style="z-index: 1;" class="absolute hidden top-0 left-0 w-full z-3
+  min-h-screen"></div>
+  <div id="localStream" class="relative min-w-[300px] min-h-[250px] bg-zinc-500 rounded-lg overflow-hidden">
+     <h1 class="text-2xl text-center text-white align-text-bottom absolute bottom-2 left-2"></h1>
+  </div>
+</div>
+  <div style="z-index: 2;" class="text-black meeting-conroles w-full flex justify-center items-center absolute bottom-2 left-0">
+    <button class="bg-white rounded-lg border-white py-2 px-5 audio m-2" id="audio">Audio</button>
+    <button class="bg-white rounded-lg border-white py-2 px-5 video m-2" id="video">Video</button>
+    <button class="bg-white rounded-lg border-white py-2 px-5 screen m-2" id="screen">Screen Share</button>
+    <button class="bg-red-500 rounded-lg border-white text-white py-2 px-5 screen m-2" id="endMeeting">End Meeting</button>
+  </div>
+
+  </div>
+
+</div>
+  <!-- <button id="joinMeeting">Join Meeting</button>
+  <button id="toggleAudio">Toggle Audio</button>
+  <button id="toggleVideo">Toggle Video</button>
+  <button id="startScreenShare">Start Screen Share</button>
+  <button id="stopScreenShare">Stop Screen Share</button>
+  
+  <div id="divId"></div> -->
+  <script src="bundle.js"></script>
+</body>
+</html>

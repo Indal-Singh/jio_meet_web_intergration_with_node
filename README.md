@@ -58,5 +58,5 @@ npm start
 # or
 yarn start
 ```
-The server will start and listen on http://localhost:3000 by default.
+The server will start and listen on http://localhost:5000 by default.
 

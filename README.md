@@ -27,8 +27,8 @@ Follow these steps to set up and run the project:
 Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/jio-meet-web-sdk-integration.git
-cd jio-meet-web-sdk-integration
+git clone https://github.com/Indal-Singh/jio_meet_web_intergration_with_node.git
+cd jio_meet_web_intergration_with_node
 ```
 ### 2. Install Dependencies
 

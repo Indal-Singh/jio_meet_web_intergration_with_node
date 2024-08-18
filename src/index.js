@@ -3,6 +3,7 @@ import { IJMInfoEventTypes } from './eventTypes';
 
 let isAudioMuted = true;
 let isVideoMuted = true;
+let isRaised  = false;
 let meetingId = "";
 let meetingPin = "";
 let PersonName = "";
@@ -53,6 +54,19 @@ EventManager.onEvent(async (eventInfo) => {
           selectDom('#screenShearPreview').classList.add('hidden');
           selectDom('#screenShearPreview div').style.position="relative";
         }
+      } else if(action === "HAND_RAISE")
+      {
+          console.log("afterHandValue",value);
+          if (value === true) {
+            alert(" SomeOne Raised Hand ");
+          }
+          else
+          {
+            alert(" SomeOne Hand Down ");
+          }
+      } else if(action === "DISCONNECTED")
+      {
+        alert("Someone disconnected");
       }
       break;
     case IJMInfoEventTypes.PEER_LEFT:
@@ -126,6 +140,7 @@ async function toggleMuteVideo() {
   try {
     isVideoMuted = !isVideoMuted;
     await jmClient.muteLocalVideo(isVideoMuted);
+    setbackground();
     console.log(`Local video ${isVideoMuted ? "muted" : "unmuted"}`);
     if(!isVideoMuted)
     {
@@ -145,6 +160,15 @@ async function toggleMuteVideo() {
       localPeer.videoTrack.play('localStream');
 }
 
+async function setbackground()
+{
+    try {
+      // await jmClient.setBackgroundImage("https://i.postimg.cc/HxZpHYB6/green-park-view.jpg");
+      await jmClient.setBackgroundBlurring("5");
+    } catch (error) {
+      console.log("Failed to set background", error);
+    }
+}
 async function startScreenShare() {
   try {
     const screenShareTrack = await jmClient.startScreenShare();
@@ -185,6 +209,52 @@ async function leaveMeeting() {
   }
 }
 
+async function riseHand() {
+  try {
+    console.log('update hand',isRaised);
+    if(!isRaised)
+    {
+      await jmClient.raiseHand(true);
+      isRaised=true;
+      selectDom('#raiseHand').classList.remove('bg-white');
+      selectDom('#raiseHand').classList.add('bg-orange-900', 'text-white');
+    }
+    else{
+      await jmClient.raiseHand(false);
+      isRaised=false;
+      selectDom('#raiseHand').classList.remove('bg-orange-900', 'text-white');
+      selectDom('#raiseHand').classList.add('bg-white');
+    }
+  } catch (error) {
+    console.error("Failed to Raise Hand:", error);
+    // Optionally, you can handle the error, show a message to the user, etc.
+  }
+}
+
+// async function handelStartWhiteBoard()
+// {
+//   try {
+//     await jmClient.startWhiteboard();
+//     await renderWhiteBoard('whiteBoardContainer');
+//     selectDom('#whiteboard').classList.remove('bg-white');
+//     selectDom('#whiteboard').classList.add('bg-orange-900', 'text-white');
+//     selectDom('#whiteboard').attr('Onclick','stopWhiteBoardLcoal()');
+//   } catch (error) {
+//     console.error("Failed to Connect Whiteboard:", error);
+//     // Optionally, you can handle the error, show a message to the user, etc.
+//   }
+// }
+
+// async function stopWhiteBoardLcoal() {
+//   try {
+//     await jmClient.stopWhiteBoard();
+//     selectDom('#whiteboard').classList.remove('bg-orange-900', 'text-white');
+//     selectDom('#whiteboard').classList.add('bg-white');
+//   } catch (error) {
+//     console.error("Failed to Stop Whiteboard:", error);
+//   }
+// }
+
 function destroyUser(id)
 {
   selectDom(`#${id}`).classList.add('hidden');
@@ -200,3 +270,5 @@ selectDom('#audio').addEventListener('click', toggleMuteAudio);
 selectDom('#video').addEventListener('click', toggleMuteVideo);
 selectDom('#endMeeting').addEventListener('click', leaveMeeting);
 selectDom('#screen').addEventListener('click', startScreenShare);
+selectDom('#raiseHand').addEventListener('click', riseHand);
+// selectDom('#whiteboard').addEventListener('click', handelStartWhiteBoard);

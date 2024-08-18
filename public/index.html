@@ -11,9 +11,9 @@
   <div class="jiomeet-form" id="jiomeet-form">
     <h1>Enter Meeting Details</h1>
     <div class="details-container">
-      <input type="number" id="meetingId" placeholder="Enter Meeting Id" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
-      <input type="text" id="meetingPin" placeholder="Enter Meeting Pin" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
-      <input type="text" id="personName" placeholder="Enter Your Name" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
+      <input value="3164516654" type="number" id="meetingId" placeholder="Enter Meeting Id" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
+      <input value="5zHr3" type="text" id="meetingPin" placeholder="Enter Meeting Pin" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
+      <input value="Indal Singh" type="text" id="personName" placeholder="Enter Your Name" class="bg-zinc-700 p-2 text-zinc-400 my-2 rounded-lg w-full">
       <button class="bg-orange-900 rounded-lg text-white py-3 px-5" id="joinMeeting">Join</button>
     </div>
   </div>
@@ -26,10 +26,17 @@
      <h1 class="text-2xl text-center text-white align-text-bottom absolute bottom-2 left-2"></h1>
   </div>
 </div>
+
+<!-- <div id="whiteBoardContainer" class="h-100 w-100">
+</div> -->
+
+
   <div style="z-index: 2;" class="text-black meeting-conroles w-full flex justify-center items-center absolute bottom-2 left-0">
     <button class="bg-white rounded-lg border-white py-2 px-5 audio m-2" id="audio">Audio</button>
     <button class="bg-white rounded-lg border-white py-2 px-5 video m-2" id="video">Video</button>
     <button class="bg-white rounded-lg border-white py-2 px-5 screen m-2" id="screen">Screen Share</button>
+    <button class="bg-white rounded-lg border-white py-2 px-5 screen m-2" id="raiseHand">RiseHand</button>
+    <!-- <button class="bg-white rounded-lg border-white py-2 px-5 screen m-2" id="whiteboard">White Board</button> -->
     <button class="bg-red-500 rounded-lg border-white text-white py-2 px-5 screen m-2" id="endMeeting">End Meeting</button>
   </div>
 
